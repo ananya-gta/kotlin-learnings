@@ -29,4 +29,36 @@ fun main() {
         name.length
     }
     println("result : $result")
+ // -----------------USE OF WHEN--------------------------
+    var position = 1
+    val medal = if (position == 1) {
+        "GOLD"
+    } else if (position == 2) {
+        "SILVER"
+    } else if (position == 3) {
+        "BRONZE"
+    } else {
+        "LOOSE"
+    }
+
+    println("medal : $medal")
+
+    position = 2
+    val medalUsingWhen = when (position) {
+        1 -> {
+            "GOLD"
+        }
+        2 -> {
+            "SILVER"
+        }
+        3 -> {
+            "BRONZE"
+        }
+        else -> {
+            "LOOSE"
+        }
+    }
+
+    println("medal using when : $medalUsingWhen")
+
 }

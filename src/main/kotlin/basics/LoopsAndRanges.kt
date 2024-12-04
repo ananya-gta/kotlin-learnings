@@ -1,5 +1,7 @@
 package org.example.basics
 
+import kotlin.math.exp
+
 fun main() {
     val range = 1..10
     println("Values in Ascending Order")
@@ -17,4 +19,24 @@ fun main() {
     for (y in rangeDesc step 2) {
         println("i : $y")
     }
+
+    exploreWhile()
+    exploreDoWhile()
+}
+
+fun exploreWhile() {
+    var x = 1
+    while (x < 10) {
+        println("Value of x is $x")
+        ++x
+    }
+}
+
+fun exploreDoWhile() {
+    var x = 0
+    do {
+        println("Value of x is $x")
+        x++
+    } while (x < 10)
+
 }

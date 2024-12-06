@@ -16,4 +16,5 @@ fun main() {
     println(item.name)
     item.name = "iPhone 15"
     println(item.name)
+    println(item)
 }

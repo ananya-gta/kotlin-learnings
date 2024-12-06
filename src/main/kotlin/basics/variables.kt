@@ -1,5 +1,8 @@
 package org.example.basics
 
+import org.example.basics.functions.courseName
+import org.example.basics.functions.topLevelFunctions
+
 fun main() {
     // val declared variables are immutable
     val name : String = "Ananya"
@@ -26,5 +29,6 @@ fun main() {
         DEF
     """.trimIndent()
     println("multiline in Kotlin:\n $multilineInKotlin")
-
+    println(topLevelFunctions())
+    println("courseName : $courseName")
 }

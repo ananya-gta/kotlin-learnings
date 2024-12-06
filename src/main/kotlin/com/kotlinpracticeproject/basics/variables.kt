@@ -1,7 +1,7 @@
-package org.example.basics
+package com.kotlinpracticeproject.basics
 
-import org.example.basics.functions.courseName
-import org.example.basics.functions.topLevelFunctions
+import com.kotlinpracticeproject.functions.courseName
+import com.kotlinpracticeproject.functions.topLevelFunctions
 
 fun main() {
     // val declared variables are immutable

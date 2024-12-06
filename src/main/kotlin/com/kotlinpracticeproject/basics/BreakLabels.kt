@@ -1,4 +1,4 @@
-package org.example.basics
+package com.kotlinpracticeproject.basics
 
 fun main() {
     for (i in 1..10) {

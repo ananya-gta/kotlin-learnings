@@ -1,6 +1,4 @@
-package org.example.basics
-
-import kotlin.math.exp
+package com.kotlinpracticeproject.basics
 
 fun main() {
     val range = 1..10

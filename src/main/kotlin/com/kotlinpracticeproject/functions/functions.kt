@@ -1,7 +1,6 @@
-package org.example.basics.functions
+package com.kotlinpracticeproject.functions
 
 import java.time.LocalDate
-import java.util.Locale
 
 fun main() {
     printName("Ananya")

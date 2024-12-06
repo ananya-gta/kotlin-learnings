@@ -1,4 +1,4 @@
-package org.example.basics.functions
+package com.kotlinpracticeproject.functions
 
 // below top level functions and properties are being called in variables.kt
 const val courseName = "Kotlin Course"

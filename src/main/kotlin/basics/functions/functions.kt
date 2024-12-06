@@ -1,5 +1,8 @@
 package org.example.basics.functions
 
+import java.time.LocalDate
+import java.util.Locale
+
 fun main() {
     printName("Ananya")
     val unit = printName("A")
@@ -7,6 +10,8 @@ fun main() {
     val result = additionApproach1(1, 2)
     println("result of addition through approach 1 : $result")
     println("result of addition through approach 2 : ${additionApproach2(3,4)}")
+    printPersonDetails("dilip")
+    printPersonDetails(name="dilip", dob=LocalDate.parse("2000-12-03"))
 }
 
 // function parameters
@@ -21,3 +26,7 @@ fun additionApproach1(a: Int, b: Int): Int {
 }
 
 fun additionApproach2(a: Int, b: Int): Int = a + b
+
+fun printPersonDetails(name : String, email : String= "", dob : LocalDate = LocalDate.now()) {
+    println("Name: $name, email: $email, dob: $dob")
+}

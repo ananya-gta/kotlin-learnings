@@ -4,6 +4,7 @@ import com.kotlinpracticeproject.classes.Course
 
 // the particular repository will manage the course.kt file
 interface CourseRepository {
+    val isCoursePersisted : Boolean
     // abstract method - which provides only the method signature and the implementation depends on the subclass or implementing class
     fun getById(id : Int) : Course
 
@@ -19,9 +20,9 @@ interface Repository {
     fun getAll() : Any
 }
 
-
-
 class ReactCourseRepository : CourseRepository, Repository {
+    override var isCoursePersisted: Boolean = false
+
     override fun getById(id: Int): Course {
         return Course("React Learning", id,"Akshay Saini")
     }
@@ -29,9 +30,16 @@ class ReactCourseRepository : CourseRepository, Repository {
     override fun getAll() : Any {
         return 1
     }
+
+    override fun save(course : Course) : Int{
+        isCoursePersisted = true
+        return course.id
+    }
 }
 
 class KotlinCourseRepository : CourseRepository {
+    override val isCoursePersisted: Boolean = false
+
     override fun getById(id: Int): Course {
         return Course("Kotlin Course", id,"Maxmillian")
     }
@@ -69,7 +77,10 @@ fun main() {
     val react = ReactCourseRepository()
     val course = react.getById(1)
     println(course)
+    println(react.isCoursePersisted)
     println(react.save(course))
+
+
     val kotlin = KotlinCourseRepository()
     val course2 = kotlin.getById(2)
     println(course2)

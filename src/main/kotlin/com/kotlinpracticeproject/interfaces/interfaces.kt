@@ -19,6 +19,8 @@ interface Repository {
     fun getAll() : Any
 }
 
+
+
 class ReactCourseRepository : CourseRepository, Repository {
     override fun getById(id: Int): Course {
         return Course("React Learning", id,"Akshay Saini")
@@ -41,6 +43,28 @@ class KotlinCourseRepository : CourseRepository {
     }
 }
 
+// handling conflicting functions in interfaces
+interface A {
+    fun doSomething() {
+        println("do something in A")
+    }
+}
+
+interface B {
+    fun doSomething() {
+        println("do something in B")
+    }
+}
+
+class AB : A, B {
+    override fun doSomething() {
+        // using generics to prevent conflicts
+        super<A>.doSomething()
+        super<B>.doSomething()
+        println("do something in AB")
+    }
+}
+
 fun main() {
     val react = ReactCourseRepository()
     val course = react.getById(1)
@@ -51,4 +75,6 @@ fun main() {
     println(course2)
     println(kotlin.save(course2))
     println(kotlin.save(Course("Kotlin Course", 6,"Maxmillian")))
+    val ab = AB()
+    ab.doSomething()
 }

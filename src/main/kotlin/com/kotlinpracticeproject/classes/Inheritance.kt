@@ -14,7 +14,7 @@ class Student(name: String) : User(name) {
         println("inside student login")
         super.login()
     }
-
+// companion object is used to introduce static functionalities
     companion object {
         const val noOfCourses = 10
         fun country() = "USA"

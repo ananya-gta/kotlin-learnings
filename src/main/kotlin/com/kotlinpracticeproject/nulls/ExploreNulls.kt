@@ -8,6 +8,14 @@ data class Movie(
 fun main() {
     var nameNullable : String? = null
     println("Nullable Value is : ${nameNullable}")
+    println("Length of Nullable Value using safe call operator is : ${nameNullable?.length}")
+    nameNullable = "Alex"
+    println("Length of Nullable Value using safe call operator is : ${nameNullable.length}")
+
+    // elvis operator is used to provide a default value when a nullable expression is null
+    nameNullable = null
+    val length = nameNullable?.length ?: 0
+    println("Length of Nullable Value using elvis operator is : ${length}")
 
     nameNullable = "Ananya"
     println("After manipulation Nullable Value is : ${nameNullable}")
@@ -19,10 +27,13 @@ fun main() {
 
     val movie =  Movie(null, "Avengers")
     println("before saving: $movie")
-    println("after saving: ${saveMovie(movie)}")
+    val savedMovie = saveMovie(movie)
+    //  non-null assertion is used to assert that a value is not null, and it will throw a NullPointerException (NPE) if the value is actually null
+    println(savedMovie.id!!)
+    println("after saving: ${savedMovie.id}")
 
 }
 
 fun saveMovie(movie: Movie) : Movie{
-    return movie.copy(id = 1)
+    return movie.copy(id = 1)  
 }

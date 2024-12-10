@@ -7,6 +7,11 @@ data class Movie(
 
 fun main() {
     var nameNullable : String? = null
+//    printName(nameNullable!!) // will give null pointer exception
+    // to prevent this
+    nameNullable?.run {
+        printName(this)
+    }
     println("Nullable Value is : ${nameNullable}")
     println("Length of Nullable Value using safe call operator is : ${nameNullable?.length}")
     nameNullable = "Alex"
@@ -35,5 +40,9 @@ fun main() {
 }
 
 fun saveMovie(movie: Movie) : Movie{
-    return movie.copy(id = 1)  
+    return movie.copy(id = 1)
+}
+
+fun printName(name: String) {
+    println("Name: $name")
 }

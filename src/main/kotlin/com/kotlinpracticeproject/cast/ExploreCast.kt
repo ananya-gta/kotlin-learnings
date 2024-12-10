@@ -34,7 +34,7 @@ fun checkType(type: Any) {
 fun castNumber(any: Any) {
     when (any) {
         // as is used to cast a value to a certain type
-        any as Double -> {
+        any as? Double -> { // using safe call operator
             println("value is Double")
         }
     }

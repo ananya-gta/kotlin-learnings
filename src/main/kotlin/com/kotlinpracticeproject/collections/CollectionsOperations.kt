@@ -2,6 +2,7 @@ package com.kotlinpracticeproject.collections
 
 import com.kotlinpracticeproject.dataset.Course
 import com.kotlinpracticeproject.dataset.CourseCategory
+import com.kotlinpracticeproject.dataset.KAFKA
 import com.kotlinpracticeproject.dataset.courseList
 
 
@@ -18,6 +19,15 @@ fun main() {
     exploreMap(courseList)
     println("------------------Exploring Map & Filter Function together--------------------")
     exploreMapAndFilter(courseList, desPredicate)
+    // flatMap -->  used if collection has another collection, flatten the list of lists and returns a single list
+    println("------------------Exploring flatMap Function together--------------------")
+    val list = listOf(listOf("A", "B", "C"), listOf("D", "E", "F"))
+    val mapResult = list.map { outerList -> outerList.map { it } }
+    println(mapResult)
+    val flatMapResult = list.flatMap { outerList -> outerList.map { it } }
+    println(flatMapResult)
+    val kafkaCourses = exploreFlatMap(courseList, KAFKA)
+    println("Kafka is in the following courses: $kafkaCourses")
 }
 
 fun exploreFilter(courseList: MutableList<Course>, predicate: (Course) -> Boolean) {
@@ -48,3 +58,16 @@ fun exploreMapAndFilter(courseList: MutableList<Course>, predicate: (Course) -> 
         .map { "${it.name} - ${it.category}" }
         .forEach { println(it) }
 }
+
+fun exploreFlatMap(courseList: MutableList<Course>, kafka: String): List<String> {
+    val kafkaCourses = courseList.flatMap { course ->
+        val courseName = course.name
+        course.topicsCovered.filter {
+            it == kafka
+        }.map {
+            "courseName -> ${courseName}"
+        }
+    }
+    return kafkaCourses
+}
+

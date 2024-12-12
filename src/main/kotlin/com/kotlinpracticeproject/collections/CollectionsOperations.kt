@@ -28,6 +28,8 @@ fun main() {
     println(flatMapResult)
     val kafkaCourses = exploreFlatMap(courseList, KAFKA)
     println("Kafka is in the following courses: $kafkaCourses")
+    println("------------------Exploring HashMaps--------------------")
+    exploreHashMaps()
 }
 
 fun exploreFilter(courseList: MutableList<Course>, predicate: (Course) -> Boolean) {
@@ -69,5 +71,24 @@ fun exploreFlatMap(courseList: MutableList<Course>, kafka: String): List<String>
         }
     }
     return kafkaCourses
+}
+
+fun exploreHashMaps() {
+     val nameAgeMutableMap = mutableMapOf("Anna" to 23, "Damon" to 145)
+    nameAgeMutableMap.forEach {
+        (k,v) -> println("$k -> $v")
+    }
+    val value = nameAgeMutableMap.get("Anna")
+    println("Value for key Anna is $value")
+    val valueGetOrElse = nameAgeMutableMap.getOrElse("Anu"){54}
+    println("Default Value for key Anu is $valueGetOrElse")
+
+    println("Check if map contains the key or not : ${nameAgeMutableMap.contains(" Anna ")}")
+
+    println("Get keys in the value map whose length is greater than 3 : ${
+        nameAgeMutableMap.filterKeys {it.length > 3}.map {it.key.uppercase()}
+    }")
+
+    println("First entry with the maximum value or will return null if there isn't any : ${ nameAgeMutableMap.maxByOrNull { it.value } }")
 }
 

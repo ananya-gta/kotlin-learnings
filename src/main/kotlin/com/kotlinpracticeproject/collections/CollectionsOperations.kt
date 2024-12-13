@@ -30,6 +30,8 @@ fun main() {
     println("Kafka is in the following courses: $kafkaCourses")
     println("------------------Exploring HashMaps--------------------")
     exploreHashMaps()
+    println("------------------Exploring Nullability in Collections--------------------")
+    collectionsNullability()
 }
 
 fun exploreFilter(courseList: MutableList<Course>, predicate: (Course) -> Boolean) {
@@ -90,5 +92,21 @@ fun exploreHashMaps() {
     }")
 
     println("First entry with the maximum value or will return null if there isn't any : ${ nameAgeMutableMap.maxByOrNull { it.value } }")
+}
+
+fun collectionsNullability() {
+    // Case-1: when the list can be null
+    var list : MutableList<String>? = null
+    list = mutableListOf()
+    list.add("Ananya")
+    list?.forEach {
+        println("Value in case1 is : $it")
+    }
+
+    // Case-2 : when the list items can be null
+    val list1 : List<String?> = listOf("Ana", null, "Ben")
+    list1.forEach {
+        println(it?.length)
+    }
 }
 

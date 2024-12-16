@@ -8,10 +8,11 @@ data class Movie(
 fun main() {
     var nameNullable : String? = null
 //    printName(nameNullable!!) // will give null pointer exception
-    // to prevent this
+    // to prevent above
     nameNullable?.run {
         printName(this)
-    }
+    } // here run is scope function - to execute a code block within the context of an object
+
     println("Nullable Value is : ${nameNullable}")
     println("Length of Nullable Value using safe call operator is : ${nameNullable?.length}")
     nameNullable = "Alex"

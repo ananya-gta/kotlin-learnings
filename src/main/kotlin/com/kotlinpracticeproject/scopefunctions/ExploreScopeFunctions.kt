@@ -4,18 +4,21 @@ import com.kotlinpracticeproject.classes.Course
 import com.kotlinpracticeproject.classes.CourseCategory
 
 fun main() {
+    // let, also, apply are extension functions can be accessed by . operator
     exploreApply()
     exploreAlso()
     chainMultipleScopeFunctions()
     exploreLet()
+    // with & run scope function - not extension functions - cannot access by . operator
     exploreWith()
+    exploreRun()
 }
 
 fun exploreApply() {
     val course = Course(
-        "Design Thinking in Kotlin", 1,"Akshay Saini"
+        "Design Thinking in Kotlin", 1, "Akshay Saini"
     ).apply {
-       courseCategory = CourseCategory.DESIGN
+        courseCategory = CourseCategory.DESIGN
         // this.courseCategory = CourseCategory.DESIGN
     }
     println("course using apply : $course")
@@ -23,7 +26,7 @@ fun exploreApply() {
 
 fun exploreAlso() {
     val course = Course(
-        "Design Thinking in Kotlin", 1,"Akshay Saini"
+        "Design Thinking in Kotlin", 1, "Akshay Saini"
     ).also { // used to give additional effects
         it.courseCategory = CourseCategory.DESIGN
         // this.courseCategory = CourseCategory.DESIGN
@@ -34,7 +37,7 @@ fun exploreAlso() {
 
 fun chainMultipleScopeFunctions() {
     val course = Course(
-        "Design Thinking in Kotlin", 1,"Akshay Saini"
+        "Design Thinking in Kotlin", 1, "Akshay Saini"
     ).apply {
         courseCategory = CourseCategory.DESIGN
         // this.courseCategory = CourseCategory.DESIGN
@@ -63,7 +66,7 @@ fun exploreLet() {
     println(sum)
 
     // example -2
-    var name : String? = null
+    var name: String? = null
     var capitalize = name?.let {
         println(it)
         it.uppercase()
@@ -73,5 +76,28 @@ fun exploreLet() {
 }
 
 fun exploreWith() {
+    val numbers = mutableListOf(1, 2, 3, 4, 5)
+    val withFunc = with(numbers) {
+        println("Size is ${numbers.size}")
+        println("Size using with is $size")
+        numbers.plus(6)
+        numbers.sum()
+    }
+    println("With result is : $withFunc")
+}
 
+fun exploreRun() {
+    var numbers : MutableList<Int>? = null
+    val result = numbers.run {
+        numbers = mutableListOf(1, 2, 3, 4, 5)
+        numbers?.sum()
+    }
+    println("Run Result is $result")
+
+    val length = run {
+        val name = "Ananya"
+        println(name)
+        name.length
+    }
+    println("Run Result is $length")
 }
